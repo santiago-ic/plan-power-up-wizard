@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Check, AlertCircle } from "lucide-react";
+import { ArrowLeft, Check, Info } from "lucide-react";
 
 interface ConfirmationStepProps {
   selectedPlan: string;
@@ -98,12 +98,12 @@ const ConfirmationStep = ({
         </div>
       </div>
 
-      <div className="bg-orange-50 border border-orange-100 rounded-xl p-6">
+      <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
         <div className="flex items-start">
-          <AlertCircle className="h-6 w-6 text-orange-500 mr-3 mt-0.5" />
+          <Info className="h-6 w-6 text-blue-500 mr-3 mt-0.5" />
           <div>
-            <h3 className="text-lg font-medium text-orange-800">Important Information</h3>
-            <ul className="mt-2 space-y-2 text-orange-700">
+            <h3 className="text-lg font-medium text-blue-800">Important Information</h3>
+            <ul className="mt-2 space-y-2 text-blue-700">
               <li>• By confirming, you agree to migrate to our new Premium plan.</li>
               <li>• Your current plan will be replaced with the new Premium plan.</li>
               <li>• You won't be charged until your next billing date (March 29, 2025).</li>
@@ -169,7 +169,7 @@ const ConfirmationStep = ({
         
         <Button 
           onClick={onComplete}
-          className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-6 py-6 text-lg"
+          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-6 text-lg shadow-lg"
           size="lg"
         >
           Confirm Migration

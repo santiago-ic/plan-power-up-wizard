@@ -17,9 +17,9 @@ const toggleVariants = cva(
           "border border-transparent bg-gradient-to-r from-gray-100 to-gray-200 hover:from-blue-50 hover:to-violet-50 data-[state=on]:shadow-inner"
       },
       size: {
-        default: "h-10 px-3",
-        sm: "h-9 px-2.5",
-        lg: "h-11 px-5",
+        default: "h-9 px-3",
+        sm: "h-8 px-2",
+        lg: "h-10 px-4",
       },
     },
     defaultVariants: {

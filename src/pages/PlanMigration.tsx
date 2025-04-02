@@ -5,6 +5,7 @@ import MigrationWizard from "@/components/migration/MigrationWizard";
 import SelectPlanStep from "@/components/migration/SelectPlanStep";
 import PaymentMethodStep from "@/components/migration/PaymentMethodStep";
 import ConfirmationStep from "@/components/migration/ConfirmationStep";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const PlanMigration = () => {
   const navigate = useNavigate();
@@ -96,28 +97,30 @@ const PlanMigration = () => {
   };
 
   return (
-    <div className="h-screen bg-gradient-to-b from-white to-gray-50 overflow-hidden flex flex-col">
+    <div className="h-screen bg-gradient-to-b from-white to-gray-50 flex flex-col">
       <div 
         className={`fixed inset-0 w-full h-full bg-gradient-to-br from-blue-600/5 to-violet-600/5 pointer-events-none transition-opacity duration-1000 ${pageLoaded ? 'opacity-100' : 'opacity-0'}`}
       ></div>
       <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-blue-600/10 to-violet-600/10 rounded-full filter blur-3xl opacity-70 -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-blue-600/10 to-violet-600/10 rounded-full filter blur-3xl opacity-70 translate-x-1/3 translate-y-1/3"></div>
       
-      <div className="max-w-6xl mx-auto px-4 py-6 relative z-10 flex-1 flex flex-col">
+      <div className="max-w-6xl mx-auto px-4 py-4 relative z-10 flex-1 flex flex-col">
         <div className={`transition-all duration-700 transform ${pageLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'} flex-1 flex flex-col`}>
-          <div className="mb-4 text-center">
-            <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600 inline-block">
+          <div className="mb-3 text-center">
+            <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600 inline-block">
               Plan Migration Wizard
             </h1>
-            <p className="text-center text-gray-600 mt-1 max-w-2xl mx-auto text-sm">
+            <p className="text-center text-gray-600 mt-0.5 max-w-2xl mx-auto text-xs">
               We're upgrading our membership structure to provide you with better features and services.
             </p>
           </div>
           
           <MigrationWizard steps={steps} currentStep={currentStep} />
           
-          <div className={`bg-white rounded-xl shadow-lg p-6 mt-4 transition-all duration-500 transform flex-1 overflow-auto`}>
-            {renderStepContent()}
+          <div className="bg-white rounded-xl shadow-lg mt-3 transition-all duration-500 transform flex-1 flex flex-col max-h-[calc(100vh-220px)]">
+            <ScrollArea className="flex-1 px-4 py-3 overflow-auto">
+              {renderStepContent()}
+            </ScrollArea>
           </div>
         </div>
       </div>

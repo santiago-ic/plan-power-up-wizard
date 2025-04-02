@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Toggle } from "@/components/ui/toggle";
+import { Switch } from "@/components/ui/switch";
 import { ArrowRight, Check, Info } from "lucide-react";
 
 interface SelectPlanStepProps {
@@ -49,19 +48,11 @@ const SelectPlanStep = ({
         <span className={`text-sm font-medium ${billingCycle === "monthly" ? "text-blue-600" : "text-gray-500"}`}>
           Monthly
         </span>
-        <Toggle
-          pressed={billingCycle === "annual"}
-          onPressedChange={toggleBillingCycle}
-          className="data-[state=on]:bg-blue-600"
-        >
-          <div className="relative w-12 h-6 bg-gray-200 rounded-full">
-            <div
-              className={`absolute w-5 h-5 rounded-full bg-white top-0.5 transition-all duration-200 ${
-                billingCycle === "annual" ? "left-6" : "left-0.5"
-              }`}
-            />
-          </div>
-        </Toggle>
+        <Switch
+          checked={billingCycle === "annual"}
+          onCheckedChange={toggleBillingCycle}
+          className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-600 data-[state=checked]:to-violet-600 data-[state=unchecked]:bg-gray-300"
+        />
         <span className={`text-sm font-medium ${billingCycle === "annual" ? "text-blue-600" : "text-gray-500"}`}>
           Annual
           <span className="ml-1 bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full">

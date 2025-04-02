@@ -14,14 +14,14 @@ interface MigrationWizardProps {
 
 const MigrationWizard = ({ steps, currentStep }: MigrationWizardProps) => {
   return (
-    <div className="px-4 py-5">
+    <div className="px-2 py-3">
       <nav aria-label="Progress">
         <ol role="list" className="flex items-center">
           {steps.map((step, stepIdx) => (
             <li
               key={step.name}
               className={cn(
-                stepIdx !== steps.length - 1 ? "pr-8 sm:pr-20" : "",
+                stepIdx !== steps.length - 1 ? "pr-4 sm:pr-10" : "",
                 "relative flex-1"
               )}
             >
@@ -31,10 +31,10 @@ const MigrationWizard = ({ steps, currentStep }: MigrationWizardProps) => {
                     <div className="h-0.5 w-full bg-gradient-to-r from-blue-600 to-violet-600" />
                   </div>
                   <div
-                    className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-violet-600"
+                    className="relative flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-violet-600"
                   >
                     <svg
-                      className="h-6 w-6 text-white"
+                      className="h-4 w-4 text-white"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
@@ -46,9 +46,9 @@ const MigrationWizard = ({ steps, currentStep }: MigrationWizardProps) => {
                       />
                     </svg>
                   </div>
-                  <div className="mt-3 text-center">
-                    <div className="text-sm font-medium text-gray-900">{step.name}</div>
-                    <div className="text-xs text-gray-500">{step.description}</div>
+                  <div className="mt-2 text-center">
+                    <div className="text-xs font-medium text-gray-900">{step.name}</div>
+                    <div className="text-xs text-gray-500 hidden sm:block">{step.description}</div>
                   </div>
                 </div>
               ) : step.id === currentStep ? (
@@ -57,19 +57,19 @@ const MigrationWizard = ({ steps, currentStep }: MigrationWizardProps) => {
                     <div className="h-0.5 w-full bg-gray-200" />
                   </div>
                   <div
-                    className="relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-blue-600 bg-white"
+                    className="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-blue-600 bg-white"
                     aria-current="step"
                   >
                     <span
-                      className="h-6 w-6 flex items-center justify-center rounded-full bg-blue-100 text-blue-800 font-semibold"
+                      className="h-5 w-5 flex items-center justify-center rounded-full bg-blue-100 text-blue-800 text-xs font-semibold"
                       aria-hidden="true"
                     >
                       {step.id}
                     </span>
                   </div>
-                  <div className="mt-3 text-center">
-                    <div className="text-sm font-medium text-blue-600">{step.name}</div>
-                    <div className="text-xs text-gray-500">{step.description}</div>
+                  <div className="mt-2 text-center">
+                    <div className="text-xs font-medium text-blue-600">{step.name}</div>
+                    <div className="text-xs text-gray-500 hidden sm:block">{step.description}</div>
                   </div>
                 </div>
               ) : (
@@ -78,18 +78,18 @@ const MigrationWizard = ({ steps, currentStep }: MigrationWizardProps) => {
                     <div className="h-0.5 w-full bg-gray-200" />
                   </div>
                   <div
-                    className="relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-gray-300 bg-white"
+                    className="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-300 bg-white"
                   >
                     <span
-                      className="h-6 w-6 flex items-center justify-center rounded-full text-gray-500 font-semibold"
+                      className="h-5 w-5 flex items-center justify-center rounded-full text-gray-500 text-xs font-semibold"
                       aria-hidden="true"
                     >
                       {step.id}
                     </span>
                   </div>
-                  <div className="mt-3 text-center">
-                    <div className="text-sm font-medium text-gray-500">{step.name}</div>
-                    <div className="text-xs text-gray-500">{step.description}</div>
+                  <div className="mt-2 text-center">
+                    <div className="text-xs font-medium text-gray-500">{step.name}</div>
+                    <div className="text-xs text-gray-500 hidden sm:block">{step.description}</div>
                   </div>
                 </div>
               )}

@@ -199,14 +199,7 @@ const SelectPlanStep = ({
                 </div>
               )}
             </div>
-            <div className="hidden md:block">
-              <Button 
-                onClick={onNext}
-                className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white"
-              >
-                Choose Premium
-              </Button>
-            </div>
+            {/* Removed the "Choose Premium" button that was here */}
           </div>
           
           <div className="space-y-3 mb-6">
@@ -284,3 +277,4 @@ const SelectPlanStep = ({
 };
 
 export default SelectPlanStep;
+

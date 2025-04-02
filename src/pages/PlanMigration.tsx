@@ -104,17 +104,7 @@ const PlanMigration = () => {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-blue-600/10 to-violet-600/10 rounded-full filter blur-3xl opacity-70 translate-x-1/3 translate-y-1/3"></div>
       
       <div className="max-w-7xl mx-auto px-4 py-12 relative z-10">
-        <div className={`transition-all duration-700 transform ${pageLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-          <div className="mb-10 text-center">
-            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600 inline-block">
-              Plan Migration Wizard
-            </h1>
-            <p className="text-center text-gray-600 mt-3 max-w-2xl mx-auto">
-              We're upgrading our membership structure to provide you with better features and services.
-              Follow these steps to migrate to our new plan system and unlock premium features.
-            </p>
-          </div>
-          
+        <div className={`transition-all duration-700 transform ${pageLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>          
           <MigrationWizard steps={steps} currentStep={currentStep} />
           
           <div className={`bg-white rounded-xl shadow-lg p-8 mt-8 transition-all duration-500 transform`}>

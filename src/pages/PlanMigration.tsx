@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MigrationWizard from "@/components/migration/MigrationWizard";
 import SelectPlanStep from "@/components/migration/SelectPlanStep";
@@ -12,6 +12,12 @@ const PlanMigration = () => {
   const [selectedPlan, setSelectedPlan] = useState("premium");
   const [billingCycle, setBillingCycle] = useState("annual");
   const [paymentMethodAdded, setPaymentMethodAdded] = useState(false);
+  const [pageLoaded, setPageLoaded] = useState(false);
+  
+  useEffect(() => {
+    // Add page load animation
+    setPageLoaded(true);
+  }, []);
   
   const steps = [
     {
@@ -33,7 +39,10 @@ const PlanMigration = () => {
 
   const handleNext = () => {
     if (currentStep < steps.length) {
-      setCurrentStep(currentStep + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        setCurrentStep(currentStep + 1);
+      }, 300);
     } else {
       // Completed all steps
       navigate("/migration-success");
@@ -42,7 +51,10 @@ const PlanMigration = () => {
 
   const handleBack = () => {
     if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        setCurrentStep(currentStep - 1);
+      }, 300);
     } else {
       navigate("/");
     }
@@ -84,22 +96,30 @@ const PlanMigration = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">
-            Plan Migration Wizard
-          </h1>
-          <p className="text-center text-gray-600 mt-2 max-w-2xl mx-auto">
-            We're upgrading our membership structure to provide you with better features and services.
-            Please follow these steps to migrate to our new plan system.
-          </p>
-        </div>
-        
-        <MigrationWizard steps={steps} currentStep={currentStep} />
-        
-        <div className="bg-white rounded-xl shadow-lg p-6 mt-8">
-          {renderStepContent()}
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+      <div 
+        className={`fixed inset-0 w-full h-full bg-gradient-to-br from-blue-600/5 to-violet-600/5 pointer-events-none transition-opacity duration-1000 ${pageLoaded ? 'opacity-100' : 'opacity-0'}`}
+      ></div>
+      <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-blue-600/10 to-violet-600/10 rounded-full filter blur-3xl opacity-70 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-blue-600/10 to-violet-600/10 rounded-full filter blur-3xl opacity-70 translate-x-1/3 translate-y-1/3"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 py-12 relative z-10">
+        <div className={`transition-all duration-700 transform ${pageLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+          <div className="mb-10 text-center">
+            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600 inline-block">
+              Plan Migration Wizard
+            </h1>
+            <p className="text-center text-gray-600 mt-3 max-w-2xl mx-auto">
+              We're upgrading our membership structure to provide you with better features and services.
+              Follow these steps to migrate to our new plan system and unlock premium features.
+            </p>
+          </div>
+          
+          <MigrationWizard steps={steps} currentStep={currentStep} />
+          
+          <div className={`bg-white rounded-xl shadow-lg p-8 mt-8 transition-all duration-500 transform`}>
+            {renderStepContent()}
+          </div>
         </div>
       </div>
     </div>

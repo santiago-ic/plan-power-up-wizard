@@ -2,8 +2,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { ArrowRight, Check, Info, Sparkles, X } from "lucide-react";
+import { ArrowRight, Check, Info, Sparkles, X, Clock } from "lucide-react";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
 interface SelectPlanStepProps {
   selectedPlan: string;
@@ -22,12 +22,20 @@ const SelectPlanStep = ({
 }: SelectPlanStepProps) => {
   const [animateFeatures, setAnimateFeatures] = useState(false);
   const [showInfoCard, setShowInfoCard] = useState(true);
+  const [daysRemaining, setDaysRemaining] = useState(0);
 
   useEffect(() => {
     // Trigger feature animation after component mounts
     setTimeout(() => {
       setAnimateFeatures(true);
     }, 300);
+
+    // Calculate days remaining until May 1st, 2025
+    const deadline = new Date("2025-05-01T00:00:00");
+    const today = new Date();
+    const timeRemaining = deadline.getTime() - today.getTime();
+    const daysLeft = Math.ceil(timeRemaining / (1000 * 60 * 60 * 24));
+    setDaysRemaining(daysLeft);
   }, []);
 
   const handlePlanSelect = (plan: string) => {
@@ -87,7 +95,21 @@ const SelectPlanStep = ({
         <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">
           Upgrade Your Experience
         </h2>
-        <p className="text-gray-600 mt-2">
+        
+        <Alert className="mt-4 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 shadow-sm animate-pulse">
+          <Clock className="h-5 w-5 text-amber-500" />
+          <AlertTitle className="ml-2 text-amber-800 font-semibold flex items-center">
+            Time-Sensitive Migration
+            <span className="ml-2 bg-amber-200 text-amber-800 px-2 py-0.5 rounded-full text-xs font-bold">
+              {daysRemaining} days left
+            </span>
+          </AlertTitle>
+          <AlertDescription className="ml-2 text-amber-700">
+            Your current plan will no longer be available after May 1st, 2025. Migrate now to ensure uninterrupted access to your account and unlock enhanced features.
+          </AlertDescription>
+        </Alert>
+        
+        <p className="text-gray-600 mt-4">
           We've redesigned our plans to give you more power, more features, and more value.
         </p>
       </div>
@@ -198,14 +220,6 @@ const SelectPlanStep = ({
                   </p>
                 </div>
               )}
-            </div>
-            <div className="hidden md:block">
-              <Button 
-                onClick={onNext}
-                className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white"
-              >
-                Choose Premium
-              </Button>
             </div>
           </div>
           

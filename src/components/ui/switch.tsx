@@ -21,6 +21,7 @@ const Switch = React.forwardRef<
         "pointer-events-none relative block h-4 w-4 rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0",
         "after:absolute after:top-[50%] after:left-[50%] after:h-full after:w-full after:translate-x-[-50%] after:translate-y-[-50%] after:rounded-full after:bg-white after:shadow-sm after:content-['']",
         "before:absolute before:top-[50%] before:left-[50%] before:h-[90%] before:w-[90%] before:translate-x-[-50%] before:translate-y-[-50%] before:rounded-full before:bg-gradient-to-br before:from-white before:to-gray-100 before:content-[''] before:z-10",
+        "data-[state=checked]:before:bg-gradient-to-br data-[state=checked]:before:from-blue-100 data-[state=checked]:before:to-violet-100"
       )}
     />
   </SwitchPrimitives.Root>

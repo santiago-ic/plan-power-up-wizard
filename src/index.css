@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,87 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .premium-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-violet-600;
+  }
+  
+  .premium-gradient-hover {
+    @apply hover:from-blue-700 hover:to-violet-700;
+  }
+  
+  .premium-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600;
+  }
+  
+  .premium-border {
+    @apply border border-blue-200 hover:border-blue-300 transition-colors;
+  }
+  
+  .premium-shadow {
+    @apply shadow-md hover:shadow-lg transition-shadow;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+  
+  .animate-slide-right {
+    animation: slideRight 0.4s ease-out forwards;
+  }
+  
+  .animate-pulse-subtle {
+    animation: pulseSubtle 2s infinite;
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-sm bg-white/80 dark:bg-black/30;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
   }
 }
